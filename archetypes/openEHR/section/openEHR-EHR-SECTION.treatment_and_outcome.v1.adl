@@ -1,0 +1,56 @@
+archetype (adl_version=1.4)
+	openEHR-EHR-SECTION.treatment_and_outcome.v1
+
+concept
+	[at0000]	-- Treatment and its outcome with/without medication
+language
+	original_language = <[ISO_639-1::ja]>
+description
+	original_author = <
+		["name"] = <"Shinji KOBAYASHI">
+		["organisation"] = <"openEHR.jp">
+		["email"] = <"skoba@moss.gr.jp">
+		["date"] = <"2011/01/20">
+	>
+	details = <
+		["ja"] = <
+			language = <[ISO_639-1::ja]>
+			purpose = <"治療法とその関連する薬剤とアウトカムについて記録する">
+			use = <"特定疾患臨床調査個人票">
+			misuse = <"">
+		>
+	>
+	lifecycle_state = <"Initial">
+	other_contributors = <>
+	other_details = <
+		["references"] = <"">
+		["MD5-CAM-1.0.1"] = <"A335DB373C144AA7E6E15BE69C00B891">
+	>
+
+definition
+	SECTION[at0000] matches {	-- Treatment and its outcome with/without medication
+		items cardinality matches {0..*; unordered} matches {
+			SECTION[at0001] occurrences matches {0..1} matches {*}
+			SECTION[at0003] occurrences matches {0..1} matches {*}
+		}
+	}
+
+ontology
+	term_definitions = <
+		["ja"] = <
+			items = <
+				["at0000"] = <
+					text = <"Treatment and its outcome with/without medication">
+					description = <"薬物療法などの治療とそのアウトカムについて">
+				>
+				["at0001"] = <
+					text = <"Procedure">
+					description = <"Procedure">
+				>
+				["at0003"] = <
+					text = <"Related medication">
+					description = <"*">
+				>
+			>
+		>
+	>

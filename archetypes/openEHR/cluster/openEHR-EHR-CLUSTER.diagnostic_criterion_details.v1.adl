@@ -1,0 +1,52 @@
+﻿archetype (adl_version=1.4)
+	openEHR-EHR-CLUSTER.diagnostic_criterion_details.v1
+
+concept
+	[at0000]	-- Diagnostic criterion details
+language
+	original_language = <[ISO_639-1::ja]>
+description
+	original_author = <
+		["name"] = <"">
+	>
+	details = <
+		["ja"] = <
+			language = <[ISO_639-1::ja]>
+			purpose = <"">
+			use = <"">
+			misuse = <"">
+		>
+	>
+	lifecycle_state = <"0">
+	other_contributors = <>
+	other_details = <
+		["references"] = <"">
+		["MD5-CAM-1.0.1"] = <"30EAF441C806A37CEF743417DBDF3315">
+	>
+
+definition
+	CLUSTER[at0000] matches {	-- Diagnostic criterion details
+		items cardinality matches {0..*; unordered} matches {
+			ELEMENT[at0001] occurrences matches {0..1} matches {	-- Description
+				value matches {
+					DV_TEXT matches {*}
+				}
+			}
+		}
+	}
+
+ontology
+	term_definitions = <
+		["ja"] = <
+			items = <
+				["at0000"] = <
+					text = <"Diagnostic criterion details">
+					description = <"Disgnostic criterion details">
+				>
+				["at0001"] = <
+					text = <"Description">
+					description = <"*">
+				>
+			>
+		>
+	>

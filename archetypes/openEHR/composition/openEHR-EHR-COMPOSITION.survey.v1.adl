@@ -1,0 +1,95 @@
+archetype (adl_version=1.4)
+	openEHR-EHR-COMPOSITION.survey.v1
+
+concept
+	[at0000]	-- Survey
+language
+	original_language = <[ISO_639-1::ja]>
+description
+	original_author = <
+		["name"] = <"">
+	>
+	details = <
+		["ja"] = <
+			language = <[ISO_639-1::ja]>
+			purpose = <"">
+			use = <"">
+			misuse = <"">
+		>
+	>
+	lifecycle_state = <"0">
+	other_contributors = <>
+	other_details = <
+		["references"] = <"">
+		["MD5-CAM-1.0.1"] = <"9AA4302E65C6162AFEA5B0573EC0DC48">
+	>
+
+definition
+	COMPOSITION[at0000] matches {	-- Survey
+		category matches {
+			DV_CODED_TEXT matches {
+				defining_code matches {[openehr::433]}
+			}
+		}
+		context matches {
+			EVENT_CONTEXT matches {
+				other_context matches {
+					ITEM_TREE[at0001] matches {	-- Tree
+						items cardinality matches {0..*; unordered} matches {
+							allow_archetype CLUSTER[at0003] occurrences matches {0..*} matches {	-- Author
+								include
+									archetype_id/value matches {/.*/}
+							}
+							ELEMENT[at0004] occurrences matches {0..1} matches {	-- attested date
+								value matches {
+									DV_DATE_TIME matches {*}
+								}
+							}
+							ELEMENT[at0005] occurrences matches {0..1} matches {	-- Registration type
+								value matches {
+									DV_TEXT matches {*}
+								}
+							}
+							ELEMENT[at0006] occurrences matches {0..1} matches {	-- Survaillance program
+								value matches {
+									DV_TEXT matches {*}
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+
+ontology
+	term_definitions = <
+		["ja"] = <
+			items = <
+				["at0000"] = <
+					text = <"Survey">
+					description = <"For clinical surveyllance program">
+				>
+				["at0001"] = <
+					text = <"Tree">
+					description = <"@ internal @">
+				>
+				["at0003"] = <
+					text = <"Author">
+					description = <"*">
+				>
+				["at0004"] = <
+					text = <"attested date">
+					description = <"*">
+				>
+				["at0005"] = <
+					text = <"Registration type">
+					description = <"*">
+				>
+				["at0006"] = <
+					text = <"Survaillance program">
+					description = <"*">
+				>
+			>
+		>
+	>

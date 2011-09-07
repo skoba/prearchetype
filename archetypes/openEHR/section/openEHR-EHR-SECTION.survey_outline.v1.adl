@@ -1,0 +1,237 @@
+archetype (adl_version=1.4)
+	openEHR-EHR-SECTION.survey_outline.v1
+
+concept
+	[at0000]	-- Intractable disease outline
+language
+	original_language = <[ISO_639-1::ja]>
+	translations = <
+		["en"] = <
+			language = <[ISO_639-1::en]>
+			author = <
+				["organisation"] = <"openEHR.jp">
+				["name"] = <"Shinji KOBAYASHI">
+				["email"] = <"skoba@moss.gr.jp">
+			>
+		>
+	>
+description
+	original_author = <
+		["organisation"] = <"openEHR.jp">
+		["name"] = <"Shinji KOBAYASHI">
+		["email"] = <"skoba@moss.gr.jp">
+	>
+	details = <
+		["en"] = <
+			language = <[ISO_639-1::en]>
+			purpose = <"Clinical research form of ntractable disease survaillance program in Japan">
+			use = <"">
+			misuse = <"">
+		>
+		["ja"] = <
+			language = <[ISO_639-1::ja]>
+			purpose = <"">
+			use = <"">
+			misuse = <"">
+		>
+	>
+	lifecycle_state = <"AuthorDraft">
+	other_contributors = <"Eizen KIMURA", "Heather Leslie", "Hugh Leslie">
+	other_details = <
+		["references"] = <"">
+		["MD5-CAM-1.0.1"] = <"11A4801E6773388B567F70F7FB3B1081">
+	>
+
+definition
+	SECTION[at0000] matches {	-- Intractable disease outline
+		items cardinality matches {0..*; unordered} matches {
+			SECTION[at0001] occurrences matches {0..1} matches {	-- Patient attributes
+				items cardinality matches {0..*; unordered} matches {
+					allow_archetype ADMIN_ENTRY[at0027] occurrences matches {0..*} matches {	-- Insurance
+						include
+							archetype_id/value matches {/.*/}
+					}
+				}
+			}
+			SECTION[at0014] occurrences matches {0..1} matches {	-- History
+				items cardinality matches {0..*; unordered} matches {
+					SECTION[at0002] occurrences matches {0..1} matches {*}
+					SECTION[at0005] occurrences matches {0..1} matches {*}
+					SECTION[at0008] occurrences matches {0..1} matches {*}
+					SECTION[at0026] occurrences matches {0..1} matches {*}
+				}
+			}
+			SECTION[at0015] occurrences matches {0..1} matches {	-- Observation
+				items cardinality matches {0..*; unordered} matches {
+					SECTION[at0018] occurrences matches {0..1} matches {*}
+					SECTION[at0010] occurrences matches {0..1} matches {*}
+					SECTION[at0009] occurrences matches {0..1} matches {*}
+				}
+			}
+			SECTION[at0016] occurrences matches {0..1} matches {	-- Evaluation
+				items cardinality matches {0..*; unordered} matches {
+					SECTION[at0029] occurrences matches {0..1} matches {*}
+					SECTION[at0019] occurrences matches {0..1} matches {*}
+					SECTION[at0017] occurrences matches {0..1} matches {*}
+					SECTION[at0025] occurrences matches {0..1} matches {*}
+				}
+			}
+			SECTION[at0021] occurrences matches {0..1} matches {*}
+		}
+	}
+
+ontology
+	term_definitions = <
+		["en"] = <
+			items = <
+				["at0000"] = <
+					text = <"Intractable disease outline">
+					description = <"Headline of intractable disease survaillance program">
+				>
+				["at0001"] = <
+					text = <"Patient attributes">
+					description = <"Demographic data of patient">
+				>
+				["at0002"] = <
+					text = <"Present History">
+					description = <"Disease related history">
+				>
+				["at0005"] = <
+					text = <"Past History">
+					description = <"*">
+				>
+				["at0008"] = <
+					text = <"Family History">
+					description = <"*">
+				>
+				["at0009"] = <
+					text = <"Clinical Findings">
+					description = <"*">
+				>
+				["at0010"] = <
+					text = <"Symptoms">
+					description = <"*">
+				>
+				["at0014"] = <
+					text = <"History">
+					description = <"*">
+				>
+				["at0015"] = <
+					text = <"Observation">
+					description = <"*">
+				>
+				["at0016"] = <
+					text = <"Evaluation">
+					description = <"**(ja)">
+				>
+				["at0017"] = <
+					text = <"Differential diagnosis">
+					description = <"*">
+				>
+				["at0018"] = <
+					text = <"Investigation">
+					description = <"*">
+				>
+				["at0019"] = <
+					text = <"Complication">
+					description = <"*">
+				>
+				["at0021"] = <
+					text = <"Treatment and outcome">
+					description = <"**(ja)">
+				>
+				["at0025"] = <
+					text = <"Associated symptom">
+					description = <"*">
+				>
+				["at0026"] = <
+					text = <"Life History">
+					description = <"*">
+				>
+				["at0027"] = <
+					text = <"Insurance">
+					description = <"**(ja)">
+				>
+				["at0029"] = <
+					text = <"Diagnosis">
+					description = <"**(ja)">
+				>
+			>
+		>
+		["ja"] = <
+			items = <
+				["at0000"] = <
+					text = <"特定疾患調査票概要">
+					description = <"特定疾患調査票見出し部分">
+				>
+				["at0001"] = <
+					text = <"患者属性情報">
+					description = <"氏名，生年月日，性別">
+				>
+				["at0002"] = <
+					text = <"現病歴">
+					description = <"*">
+				>
+				["at0005"] = <
+					text = <"既往歴">
+					description = <"*">
+				>
+				["at0008"] = <
+					text = <"家族歴">
+					description = <"*">
+				>
+				["at0009"] = <
+					text = <"臨床所見">
+					description = <"*">
+				>
+				["at0010"] = <
+					text = <"症状">
+					description = <"*">
+				>
+				["at0014"] = <
+					text = <"病歴">
+					description = <"*">
+				>
+				["at0015"] = <
+					text = <"観察項目">
+					description = <"*">
+				>
+				["at0016"] = <
+					text = <"病態評価項目">
+					description = <"*">
+				>
+				["at0017"] = <
+					text = <"鑑別疾患">
+					description = <"*">
+				>
+				["at0018"] = <
+					text = <"検査">
+					description = <"*">
+				>
+				["at0019"] = <
+					text = <"合併症">
+					description = <"*">
+				>
+				["at0021"] = <
+					text = <"治療とアウトカム">
+					description = <"*">
+				>
+				["at0025"] = <
+					text = <"随伴症候">
+					description = <"*">
+				>
+				["at0026"] = <
+					text = <"生活歴">
+					description = <"*">
+				>
+				["at0027"] = <
+					text = <"保険情報">
+					description = <"*">
+				>
+				["at0029"] = <
+					text = <"診断">
+					description = <"*">
+				>
+			>
+		>
+	>

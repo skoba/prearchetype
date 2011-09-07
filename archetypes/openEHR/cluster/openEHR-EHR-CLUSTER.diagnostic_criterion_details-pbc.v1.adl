@@ -1,0 +1,106 @@
+﻿archetype (adl_version=1.4)
+	openEHR-EHR-CLUSTER.diagnostic_criterion_details-pbc.v1
+specialize
+	openEHR-EHR-CLUSTER.diagnosis_criterion_details.v1
+
+concept
+	[at0000.1]	-- Diagnostic criterion for PBC
+language
+	original_language = <[ISO_639-1::ja]>
+description
+	original_author = <
+		["name"] = <"">
+	>
+	details = <
+		["ja"] = <
+			language = <[ISO_639-1::ja]>
+			purpose = <"">
+			use = <"">
+			misuse = <"">
+		>
+	>
+	lifecycle_state = <"0">
+	other_contributors = <>
+	other_details = <
+		["references"] = <"">
+		["MD5-CAM-1.0.1"] = <"B997C879639DDE07DF149BD808BA280B">
+	>
+
+definition
+	CLUSTER[at0000.1] matches {	-- Diagnostic criterion for PBC
+		items cardinality matches {0..*; unordered} matches {
+			ELEMENT[at0001] occurrences matches {0..1} matches {	-- Description
+				value matches {
+					DV_TEXT matches {*}
+				}
+			}
+			ELEMENT[at0.7] occurrences matches {0..1} matches {	-- Reason for PBC diagnosis
+				value matches {
+					DV_CODED_TEXT matches {
+						defining_code matches {
+							[local::
+							at0.8, 	-- 1
+							at0.9, 	-- 2
+							at0.10]	-- 3
+						}
+					}
+				}
+			}
+		}
+	}
+
+ontology
+	term_definitions = <
+		["ja"] = <
+			items = <
+				["at0.10"] = <
+					text = <"3">
+					description = <"組織学的検査の機会はないが，AMAが陽性で，臨床像および経過から原発性胆汁性肝硬変として考えられる">
+				>
+				["at0.2"] = <
+					text = <"新規Element">
+					description = <"*">
+				>
+				["at0.3"] = <
+					text = <"Presence of CNSDC">
+					description = <"*">
+				>
+				["at0.4"] = <
+					text = <"AMA positive">
+					description = <"*">
+				>
+				["at0.5"] = <
+					text = <"新規Element">
+					description = <"*">
+				>
+				["at0.6"] = <
+					text = <"new ordinal">
+					description = <"*">
+				>
+				["at0.7"] = <
+					text = <"Reason for PBC diagnosis">
+					description = <"*">
+				>
+				["at0.8"] = <
+					text = <"1">
+					description = <"組織学的に慢性日可能性破壊性胆管炎を認め，検査所見が原発性胆汁性肝硬変として矛盾しない">
+				>
+				["at0.9"] = <
+					text = <"2">
+					description = <"抗ミトコンドリア抗体陽性で，組織学的にはCNSDCを認めないが，原発性胆汁性肝硬変に矛盾しない組織像を示す">
+				>
+				["at0000"] = <
+					text = <"Diagnosis criterion for details">
+					description = <"unknown">
+				>
+				["at0000.1"] = <
+					text = <"Diagnostic criterion for PBC">
+					description = <"PBC diagnosis for intracltable disease">
+				>
+				["at0001"] = <
+					text = <"Description">
+					description = <"*">
+				>
+			>
+		>
+	>

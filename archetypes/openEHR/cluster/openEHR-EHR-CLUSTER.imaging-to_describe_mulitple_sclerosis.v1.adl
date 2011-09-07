@@ -1,0 +1,382 @@
+﻿archetype (adl_version=1.4)
+	openEHR-EHR-CLUSTER.imaging-to_describe_mulitple_sclerosis.v1
+specialize
+	openEHR-EHR-CLUSTER.imaging.v1
+
+concept
+	[at0000.1]	-- Imaging details for multiple screlosis
+language
+	original_language = <[ISO_639-1::en]>
+description
+	original_author = <
+		["name"] = <"Dr Ian McNicoll">
+		["organisation"] = <"Ocean Informatics, United Kingdom">
+		["email"] = <"ian.mcnicoll@oceaninformatics.com">
+		["date"] = <"14/12/2009">
+	>
+	details = <
+		["en"] = <
+			language = <[ISO_639-1::en]>
+			purpose = <"To record multiple screlosis imaging details , used in requests for imaging, records of imaging procedures and imaging reports.">
+			use = <"For use within OBSERVATION. request, ACTION.imaging and OBSERVATION.imaging or similar archetypes.">
+			keywords = <"imaging", "radiology">
+			misuse = <"">
+			copyright = <"copyright (c) 2010 openEHR Foundation">
+		>
+	>
+	lifecycle_state = <"AuthorDraft">
+	other_contributors = <"Sam Heard, Ocean Informatics, Australia", "Heather Leslie, Ocean Informatics, Australia">
+	other_details = <
+		["MD5-CAM-1.0.1"] = <"A0EE6128AE8C26092CD8DE8B260BA408">
+	>
+
+definition
+	CLUSTER[at0000.1] matches {	-- Imaging details for multiple screlosis
+		items cardinality matches {1..*; unordered} matches {
+			ELEMENT[at0001] occurrences matches {0..1} matches {	-- Imaging category
+				value matches {
+					DV_TEXT matches {*}
+					DV_CODED_TEXT matches {
+						defining_code matches {[ac0001]}		-- Neue Einschränkung
+					}
+				}
+			}
+			ELEMENT[at0010] occurrences matches {0..1} matches {	-- Imaging test name
+				value matches {
+					DV_TEXT matches {*}
+				}
+			}
+			allow_archetype CLUSTER[at0007] occurrences matches {0..*} matches {	-- Anatomical location
+				include
+					archetype_id/value matches {/openEHR-EHR-CLUSTER\.anatomical_location-precise(-[a-zA-Z0-9_]+)*\.v1/}
+				exclude
+					archetype_id/value matches {/.*/}
+			}
+			CLUSTER[at0011] occurrences matches {0..*} matches {	-- View
+				items cardinality matches {1..*; unordered} matches {
+					ELEMENT[at0012] occurrences matches {0..1} matches {	-- View name
+						value matches {
+							DV_TEXT matches {*}
+						}
+					}
+					ELEMENT[at0013] occurrences matches {0..1} matches {	-- Per-view findings
+						value matches {
+							DV_TEXT matches {*}
+						}
+					}
+					ELEMENT[at0015] occurrences matches {0..1} matches {	-- Image
+						value matches {
+							DV_MULTIMEDIA matches {
+								media_type matches {[openEHR::]}
+							}
+						}
+					}
+				}
+			}
+			CLUSTER[at0.16] occurrences matches {0..1} matches {	-- Cerebral findings
+				items cardinality matches {1..*; unordered} matches {
+					ELEMENT[at0.18] occurrences matches {0..1} matches {	-- Presence of focus
+						value matches {
+							DV_BOOLEAN matches {
+								value matches {True, False}
+							}
+						}
+					}
+					ELEMENT[at0.17] occurrences matches {0..1} matches {	-- Number of focuses
+						value matches {
+							DV_CODED_TEXT matches {
+								defining_code matches {
+									[local::
+									at0.20, 	-- 1
+									at0.21, 	-- 2
+									at0.22]	-- 3
+								}
+							}
+						}
+					}
+					ELEMENT[at0.23] occurrences matches {0..1} matches {	-- Focus around lateral ventricle
+						value matches {
+							DV_BOOLEAN matches {
+								value matches {True, False}
+							}
+						}
+					}
+					ELEMENT[at0.24] occurrences matches {0..1} matches {	-- Gadolinium enhanced
+						value matches {
+							DV_BOOLEAN matches {
+								value matches {True, False}
+							}
+						}
+					}
+					ELEMENT[at0.25] occurrences matches {0..1} matches {	-- Over 3cm forcus
+						value matches {
+							DV_BOOLEAN matches {
+								value matches {True, False}
+							}
+						}
+					}
+				}
+			}
+			CLUSTER[at0.26] occurrences matches {0..1} matches {	-- Cereberal findings
+				items cardinality matches {1..*; unordered} matches {
+					ELEMENT[at0.27] occurrences matches {0..1} matches {	-- Presence of focus
+						value matches {
+							DV_BOOLEAN matches {
+								value matches {True, False}
+							}
+						}
+					}
+					ELEMENT[at0.28] occurrences matches {0..1} matches {	-- Gadolinium enhanced
+						value matches {
+							DV_BOOLEAN matches {
+								value matches {True, False}
+							}
+						}
+					}
+				}
+			}
+			CLUSTER[at0.31] occurrences matches {0..1} matches {	-- Brainstem findings
+				items cardinality matches {1..*; unordered} matches {
+					ELEMENT[at0.32] occurrences matches {0..1} matches {	-- Presence of focus
+						value matches {
+							DV_BOOLEAN matches {
+								value matches {True, False}
+							}
+						}
+					}
+					ELEMENT[at0.33] occurrences matches {0..1} matches {	-- Gadolinium enhanced
+						value matches {
+							DV_BOOLEAN matches {
+								value matches {True, False}
+							}
+						}
+					}
+				}
+			}
+			CLUSTER[at0.34] occurrences matches {0..1} matches {	-- Optic nerve findings
+				items cardinality matches {1..*; unordered} matches {
+					ELEMENT[at0.35] occurrences matches {0..1} matches {	-- Presence of focus
+						value matches {
+							DV_BOOLEAN matches {
+								value matches {True, False}
+							}
+						}
+					}
+					ELEMENT[at0.36] occurrences matches {0..1} matches {	-- side
+						value matches {
+							DV_CODED_TEXT matches {
+								defining_code matches {
+									[local::
+									at0.37, 	-- Right
+									at0.38, 	-- Left
+									at0.39]	-- Both
+								}
+							}
+						}
+					}
+					ELEMENT[at0.40] occurrences matches {0..1} matches {	-- Gadolinium enhanced
+						value matches {
+							DV_BOOLEAN matches {
+								value matches {True, False}
+							}
+						}
+					}
+				}
+			}
+			CLUSTER[at0.41] occurrences matches {0..1} matches {	-- Spinal cord findings
+				items cardinality matches {1..*; unordered} matches {
+					ELEMENT[at0.42] occurrences matches {0..1} matches {	-- Presence of focus
+						value matches {
+							DV_BOOLEAN matches {
+								value matches {True, False}
+							}
+						}
+					}
+					ELEMENT[at0.43] occurrences matches {0..1} matches {	-- Gadolinium enhanced
+						value matches {
+							DV_BOOLEAN matches {
+								value matches {True, False}
+							}
+						}
+					}
+					ELEMENT[at0.44] occurrences matches {0..1} matches {	-- Longer than three vertebral bodies
+						value matches {
+							DV_BOOLEAN matches {
+								value matches {True, False}
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+
+ontology
+	term_definitions = <
+		["en"] = <
+			items = <
+				["at0.16"] = <
+					text = <"Cerebral findings">
+					description = <"*">
+				>
+				["at0.17"] = <
+					text = <"Number of focuses">
+					description = <"*">
+				>
+				["at0.18"] = <
+					text = <"Presence of focus">
+					description = <"*">
+				>
+				["at0.19"] = <
+					text = <"Number of focus">
+					description = <"*">
+				>
+				["at0.20"] = <
+					text = <"1">
+					description = <"9個以上">
+				>
+				["at0.21"] = <
+					text = <"2">
+					description = <"4～8個">
+				>
+				["at0.22"] = <
+					text = <"3">
+					description = <"3個以下">
+				>
+				["at0.23"] = <
+					text = <"Focus around lateral ventricle">
+					description = <"*">
+				>
+				["at0.24"] = <
+					text = <"Gadolinium enhanced">
+					description = <"*">
+				>
+				["at0.25"] = <
+					text = <"Over 3cm forcus">
+					description = <"*">
+				>
+				["at0.26"] = <
+					text = <"Cereberal findings">
+					description = <"*">
+				>
+				["at0.27"] = <
+					text = <"Presence of focus">
+					description = <"*">
+				>
+				["at0.28"] = <
+					text = <"Gadolinium enhanced">
+					description = <"*">
+				>
+				["at0.29"] = <
+					text = <"Brain stem findings">
+					description = <"*">
+				>
+				["at0.30"] = <
+					text = <"新規Element">
+					description = <"*">
+				>
+				["at0.31"] = <
+					text = <"Brainstem findings">
+					description = <"*">
+				>
+				["at0.32"] = <
+					text = <"Presence of focus">
+					description = <"*">
+				>
+				["at0.33"] = <
+					text = <"Gadolinium enhanced">
+					description = <"*">
+				>
+				["at0.34"] = <
+					text = <"Optic nerve findings">
+					description = <"*">
+				>
+				["at0.35"] = <
+					text = <"Presence of focus">
+					description = <"*">
+				>
+				["at0.36"] = <
+					text = <"side">
+					description = <"*">
+				>
+				["at0.37"] = <
+					text = <"Right">
+					description = <"*">
+				>
+				["at0.38"] = <
+					text = <"Left">
+					description = <"*">
+				>
+				["at0.39"] = <
+					text = <"Both">
+					description = <"*">
+				>
+				["at0.40"] = <
+					text = <"Gadolinium enhanced">
+					description = <"*">
+				>
+				["at0.41"] = <
+					text = <"Spinal cord findings">
+					description = <"*">
+				>
+				["at0.42"] = <
+					text = <"Presence of focus">
+					description = <"*">
+				>
+				["at0.43"] = <
+					text = <"Gadolinium enhanced">
+					description = <"*">
+				>
+				["at0.44"] = <
+					text = <"Longer than three vertebral bodies">
+					description = <"*">
+				>
+				["at0000"] = <
+					text = <"Imaging details for multiple screlosis">
+					description = <"Details of imaging, used in requests for imaging, records of imaging procedures and imaging reports.">
+				>
+				["at0000.1"] = <
+					text = <"Imaging details for multiple screlosis">
+					description = <"Details of imaging, used in requests for imaging, records of imaging procedures and imaging reports.!">
+				>
+				["at0001"] = <
+					text = <"Imaging category">
+					description = <"The type of imaging.">
+				>
+				["at0007"] = <
+					text = <"Anatomical location">
+					description = <"The anatomical site(s) to be imaged.">
+				>
+				["at0010"] = <
+					text = <"Imaging test name">
+					description = <"Imaging test requested / performed.">
+				>
+				["at0011"] = <
+					text = <"View">
+					description = <"Details about a particular view.">
+				>
+				["at0012"] = <
+					text = <"View name">
+					description = <"A description of the view taken.">
+				>
+				["at0013"] = <
+					text = <"Per-view findings">
+					description = <"Findings related to the specific view.">
+				>
+				["at0015"] = <
+					text = <"Image">
+					description = <"*">
+				>
+			>
+		>
+	>
+	constraint_definitions = <
+		["en"] = <
+			items = <
+				["ac0001"] = <
+					text = <"Neue Einschränkung">
+					description = <"*">
+				>
+			>
+		>
+	>

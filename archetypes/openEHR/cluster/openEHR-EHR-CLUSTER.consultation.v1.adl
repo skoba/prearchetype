@@ -1,0 +1,52 @@
+archetype (adl_version=1.4)
+	openEHR-EHR-CLUSTER.consultation.v1
+
+concept
+	[at0000]	-- 受診状況
+language
+	original_language = <[ISO_639-1::ja]>
+description
+	original_author = <
+		["name"] = <"">
+	>
+	details = <
+		["ja"] = <
+			language = <[ISO_639-1::ja]>
+			purpose = <"">
+			use = <"">
+			misuse = <"">
+		>
+	>
+	lifecycle_state = <"0">
+	other_contributors = <>
+	other_details = <
+		["references"] = <"">
+		["MD5-CAM-1.0.1"] = <"A2EA8066EB9413FFB803F98604972C35">
+	>
+
+definition
+	CLUSTER[at0000] matches {	-- 受診状況
+		items cardinality matches {0..*; unordered} matches {
+			ELEMENT[at0001] occurrences matches {0..1} matches {	-- 受診状況
+				value matches {
+					DV_TEXT matches {*}
+				}
+			}
+		}
+	}
+
+ontology
+	term_definitions = <
+		["ja"] = <
+			items = <
+				["at0000"] = <
+					text = <"受診状況">
+					description = <"特定疾患患者の受診状況">
+				>
+				["at0001"] = <
+					text = <"受診状況">
+					description = <"">
+				>
+			>
+		>
+	>

@@ -1,0 +1,133 @@
+archetype (adl_version=1.4)
+	openEHR-EHR-EVALUATION.serverity.v1
+
+concept
+	[at0000]	-- 重症度
+language
+	original_language = <[ISO_639-1::ja]>
+	translations = <
+		["en"] = <
+			language = <[ISO_639-1::en]>
+			author = <
+				["name"] = <"Shinji KOBAYASHI">
+			>
+		>
+	>
+description
+	original_author = <
+		["name"] = <"Shinji KOBAYASHI">
+		["organisation"] = <"openEHR.jp">
+		["email"] = <"skoba@moss.gr.jp">
+		["date"] = <"2010/07/22">
+	>
+	details = <
+		["en"] = <
+			language = <[ISO_639-1::en]>
+			purpose = <"Evaluate and record severity of personal status.">
+			use = <"Severity evaluatoin">
+			misuse = <"">
+		>
+		["ja"] = <
+			language = <[ISO_639-1::ja]>
+			purpose = <"個人の状態あるいは病態について評価した重症度を記録するためのアーキタイプ">
+			use = <"重症度の評価および記録">
+			misuse = <"">
+		>
+	>
+	lifecycle_state = <"AuthorDraft">
+	other_contributors = <>
+	other_details = <
+		["references"] = <"">
+		["MD5-CAM-1.0.1"] = <"EC1DCCE34AC8AC16C87ABC2023CCC5A9">
+	>
+
+definition
+	EVALUATION[at0000] matches {	-- 重症度
+		data matches {
+			ITEM_TREE[at0001] matches {	-- Tree
+				items cardinality matches {0..*; unordered} matches {
+					ELEMENT[at0002] occurrences matches {0..1} matches {	-- グレード
+						value matches {
+							DV_TEXT matches {*}
+						}
+					}
+					ELEMENT[at0004] occurrences matches {0..1} matches {	-- 評価基準
+						value matches {
+							DV_TEXT matches {*}
+						}
+					}
+					ELEMENT[at0006] occurrences matches {0..1} matches {	-- 評価した日時
+						value matches {
+							DV_DATE_TIME matches {*}
+						}
+					}
+					allow_archetype CLUSTER[at0003] occurrences matches {0..*} matches {	-- 詳細
+						include
+							archetype_id/value matches {/.*/}
+					}
+				}
+			}
+		}
+	}
+
+ontology
+	term_definitions = <
+		["en"] = <
+			items = <
+				["at0000"] = <
+					comment = <"To evaluate the disease status, severity is evaluated by some criteria. ">
+					text = <"Severity">
+					description = <"Express a severity on evaluation a criterion.">
+				>
+				["at0001"] = <
+					text = <"*Tree(ja)">
+					description = <"*@ internal @(ja)">
+				>
+				["at0002"] = <
+					text = <"grade">
+					description = <"grade">
+				>
+				["at0003"] = <
+					text = <"details">
+					description = <"Detail archetype">
+				>
+				["at0004"] = <
+					text = <"criterion">
+					description = <"evaluation criteria to evaluate this severity.">
+				>
+				["at0006"] = <
+					text = <"Date and time of evaluation">
+					description = <"*">
+				>
+			>
+		>
+		["ja"] = <
+			items = <
+				["at0000"] = <
+					comment = <"状態を表すために使われる重症度を保存するためのアーキタイプ">
+					text = <"重症度">
+					description = <"重症度評価のためのArchetype">
+				>
+				["at0001"] = <
+					text = <"Tree">
+					description = <"@ internal @">
+				>
+				["at0002"] = <
+					text = <"グレード">
+					description = <"重症度を評価した人">
+				>
+				["at0003"] = <
+					text = <"詳細">
+					description = <"*">
+				>
+				["at0004"] = <
+					text = <"評価基準">
+					description = <"*">
+				>
+				["at0006"] = <
+					text = <"評価した日時">
+					description = <"*">
+				>
+			>
+		>
+	>

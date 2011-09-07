@@ -1,0 +1,69 @@
+archetype (adl_version=1.4)
+	openEHR-EHR-CLUSTER.handicap_note.v1
+
+concept
+	[at0000]	-- 身体障害者手帳
+language
+	original_language = <[ISO_639-1::ja]>
+description
+	original_author = <
+		["name"] = <"">
+	>
+	details = <
+		["ja"] = <
+			language = <[ISO_639-1::ja]>
+			purpose = <"">
+			use = <"">
+			misuse = <"">
+		>
+	>
+	lifecycle_state = <"0">
+	other_contributors = <>
+	other_details = <
+		["references"] = <"">
+		["MD5-CAM-1.0.1"] = <"583DB416E9CD9E9B64D923D7EB627F35">
+	>
+
+definition
+	CLUSTER[at0000] matches {	-- 身体障害者手帳
+		items cardinality matches {0..*; unordered} matches {
+			CLUSTER[at0001] occurrences matches {0..1} matches {	-- 身体障害者手帳
+				items cardinality matches {0..*; unordered} matches {
+					ELEMENT[at0002] occurrences matches {0..1} matches {	-- 等級
+						value matches {
+							DV_TEXT matches {*}
+						}
+					}
+					ELEMENT[at0004] occurrences matches {0..1} matches {	-- 認定日
+						value matches {
+							DV_DATE_TIME matches {*}
+						}
+					}
+				}
+			}
+		}
+	}
+
+ontology
+	term_definitions = <
+		["ja"] = <
+			items = <
+				["at0000"] = <
+					text = <"身体障害者手帳">
+					description = <"unknown">
+				>
+				["at0001"] = <
+					text = <"身体障害者手帳">
+					description = <"*">
+				>
+				["at0002"] = <
+					text = <"等級">
+					description = <"*">
+				>
+				["at0004"] = <
+					text = <"認定日">
+					description = <"*">
+				>
+			>
+		>
+	>

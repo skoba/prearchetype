@@ -1,0 +1,86 @@
+archetype (adl_version=1.4)
+	openEHR-EHR-EVALUATION.outcome.v1
+
+concept
+	[at0000]	-- Outcome
+language
+	original_language = <[ISO_639-1::ja]>
+description
+	original_author = <
+		["name"] = <"">
+	>
+	details = <
+		["ja"] = <
+			language = <[ISO_639-1::ja]>
+			purpose = <"Evaluate outcome for">
+			use = <"">
+			misuse = <"">
+		>
+	>
+	lifecycle_state = <"Initial">
+	other_contributors = <>
+	other_details = <
+		["references"] = <"">
+		["MD5-CAM-1.0.1"] = <"7461B48BBF6DB9F82A8FBF9962494D78">
+	>
+
+definition
+	EVALUATION[at0000] matches {	-- Outcome
+		data matches {
+			ITEM_TREE[at0001] matches {	-- Tree
+				items cardinality matches {0..*; unordered} matches {
+					ELEMENT[at0002] occurrences matches {0..1} matches {	-- Outcome description
+						value matches {
+							DV_TEXT matches {*}
+						}
+					}
+					ELEMENT[at0003] occurrences matches {0..1} matches {	-- Outcome severity
+						value matches {
+							DV_TEXT matches {*}
+						}
+					}
+					ELEMENT[at0007] occurrences matches {0..1} matches {	-- Date of evaluation
+						value matches {
+							DV_DATE_TIME matches {*}
+						}
+					}
+					allow_archetype ELEMENT[at0004] occurrences matches {0..*} matches {	-- Procedure undertaken
+						include
+							archetype_id/value matches {/.*/}
+					}
+				}
+			}
+		}
+	}
+
+ontology
+	term_definitions = <
+		["ja"] = <
+			items = <
+				["at0000"] = <
+					text = <"Outcome">
+					description = <"unknown">
+				>
+				["at0001"] = <
+					text = <"Tree">
+					description = <"@ internal @">
+				>
+				["at0002"] = <
+					text = <"Outcome description">
+					description = <"*">
+				>
+				["at0003"] = <
+					text = <"Outcome severity">
+					description = <"*">
+				>
+				["at0004"] = <
+					text = <"Procedure undertaken">
+					description = <"*">
+				>
+				["at0007"] = <
+					text = <"Date of evaluation">
+					description = <"*">
+				>
+			>
+		>
+	>

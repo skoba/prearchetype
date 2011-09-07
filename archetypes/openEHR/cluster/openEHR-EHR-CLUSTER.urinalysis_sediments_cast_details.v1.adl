@@ -1,0 +1,90 @@
+archetype (adl_version=1.4)
+	openEHR-EHR-CLUSTER.urinalysis_sediments_cast_details.v1
+
+concept
+	[at0000]	-- Urinalysis sediments casts
+language
+	original_language = <[ISO_639-1::ja]>
+description
+	original_author = <
+		["name"] = <"">
+	>
+	details = <
+		["ja"] = <
+			language = <[ISO_639-1::ja]>
+			purpose = <"">
+			use = <"">
+			misuse = <"">
+		>
+	>
+	lifecycle_state = <"0">
+	other_contributors = <>
+	other_details = <
+		["references"] = <"">
+		["MD5-CAM-1.0.1"] = <"E20544A95F28308932430B36024D116D">
+	>
+
+definition
+	CLUSTER[at0000] matches {	-- Urinalysis sediments casts
+		items cardinality matches {0..*; unordered} matches {
+			ELEMENT[at0001] occurrences matches {0..1} matches {	-- Name
+				value matches {
+					DV_TEXT matches {*}
+				}
+			}
+			ELEMENT[at0002] occurrences matches {0..1} matches {	-- Type
+				value matches {
+					DV_TEXT matches {*}
+				}
+			}
+			ELEMENT[at0004] occurrences matches {0..1} matches {	-- Presence
+				value matches {
+					DV_BOOLEAN matches {
+						value matches {True, False}
+					}
+				}
+			}
+			ELEMENT[at0006] occurrences matches {0..1} matches {	-- Overall interpretation
+				value matches {
+					DV_TEXT matches {*}
+				}
+			}
+			ELEMENT[at0011] occurrences matches {0..1} matches {	-- Count/TF
+				value matches {
+					DV_COUNT matches {*}
+				}
+			}
+		}
+	}
+
+ontology
+	term_definitions = <
+		["ja"] = <
+			items = <
+				["at0000"] = <
+					text = <"Urinalysis sediments casts">
+					description = <"Describe sediments casts of urine">
+				>
+				["at0001"] = <
+					text = <"Name">
+					description = <"*">
+				>
+				["at0002"] = <
+					text = <"Type">
+					description = <"*">
+				>
+				["at0004"] = <
+					text = <"Presence">
+					description = <"*">
+				>
+				["at0006"] = <
+					text = <"Overall interpretation">
+					description = <"*">
+				>
+				["at0011"] = <
+					text = <"Count/TF">
+					description = <"/TF">
+				>
+			>
+		>
+	>

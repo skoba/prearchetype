@@ -1,0 +1,158 @@
+archetype (adl_version=1.4)
+	openEHR-EHR-OBSERVATION.intractable_perkinson_findings.v1
+
+concept
+	[at0000]	-- パーキンソン病関連疾患臨床所見
+language
+	original_language = <[ISO_639-1::ja]>
+description
+	original_author = <
+		["name"] = <"">
+	>
+	details = <
+		["ja"] = <
+			language = <[ISO_639-1::ja]>
+			purpose = <"">
+			use = <"">
+			misuse = <"">
+		>
+	>
+	lifecycle_state = <"0">
+	other_contributors = <>
+	other_details = <
+		["references"] = <"">
+		["MD5-CAM-1.0.1"] = <"E4C7804E9AB9D0C1F823A24C2D05446E">
+	>
+
+definition
+	OBSERVATION[at0000] matches {	-- パーキンソン病関連疾患臨床所見
+		data matches {
+			HISTORY[at0001] matches {	-- Event Series
+				events cardinality matches {1..*; unordered} matches {
+					POINT_EVENT[at0002] occurrences matches {0..1} matches {	-- 任意のイベント(Event)
+						data matches {
+							ITEM_TREE[at0003] matches {	-- Tree
+								items cardinality matches {0..*; unordered} matches {
+									ELEMENT[at0004] occurrences matches {0..1} matches {	-- 臨床所見
+										value matches {
+											DV_TEXT matches {*}
+										}
+									}
+									ELEMENT[at0005] occurrences matches {0..1} matches {	-- 優位側
+										value matches {
+											DV_CODED_TEXT matches {
+												defining_code matches {
+													[local::
+													at0006, 	-- 右
+													at0007, 	-- 左
+													at0008]	-- どちらでもない
+												}
+											}
+										}
+									}
+									ELEMENT[at0012] occurrences matches {0..1} matches {	-- グレード
+										value matches {
+											DV_COUNT matches {*}
+										}
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+
+ontology
+	term_definitions = <
+		["en"] = <
+			items = <
+				["at0000"] = <
+					text = <"*Perkinson disease clinical findings(ja)">
+					description = <"*unknown(ja)">
+				>
+				["at0001"] = <
+					text = <"*Event Series(ja)">
+					description = <"*@ internal @(ja)">
+				>
+				["at0002"] = <
+					text = <"*任意のイベント(Event)(ja)">
+					description = <"**(ja)">
+				>
+				["at0003"] = <
+					text = <"*Tree(ja)">
+					description = <"*@ internal @(ja)">
+				>
+				["at0004"] = <
+					text = <"*新規Element(ja)">
+					description = <"**(ja)">
+				>
+				["at0005"] = <
+					text = <"*新規Element(ja)">
+					description = <"**(ja)">
+				>
+				["at0006"] = <
+					text = <"*右(ja)">
+					description = <"*右側(ja)">
+				>
+				["at0007"] = <
+					text = <"*左(ja)">
+					description = <"*左側(ja)">
+				>
+				["at0008"] = <
+					text = <"*どちらでもない(ja)">
+					description = <"**(ja)">
+				>
+				["at0012"] = <
+					text = <"*新規Element(ja)">
+					description = <"**(ja)">
+				>
+			>
+		>
+		["ja"] = <
+			items = <
+				["at0000"] = <
+					comment = <"特定疾患臨床調査個人調査票パーキンソン病関連疾患臨床所見">
+					text = <"パーキンソン病関連疾患臨床所見">
+					description = <"特定疾患臨床調査個人票">
+				>
+				["at0001"] = <
+					text = <"Event Series">
+					description = <"@ internal @">
+				>
+				["at0002"] = <
+					text = <"任意のイベント(Event)">
+					description = <"*">
+				>
+				["at0003"] = <
+					text = <"Tree">
+					description = <"@ internal @">
+				>
+				["at0004"] = <
+					text = <"臨床所見">
+					description = <"*">
+				>
+				["at0005"] = <
+					text = <"優位側">
+					description = <"*">
+				>
+				["at0006"] = <
+					text = <"右">
+					description = <"右側">
+				>
+				["at0007"] = <
+					text = <"左">
+					description = <"左側">
+				>
+				["at0008"] = <
+					text = <"どちらでもない">
+					description = <"*">
+				>
+				["at0012"] = <
+					text = <"グレード">
+					description = <"*">
+				>
+			>
+		>
+	>

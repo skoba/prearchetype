@@ -1,0 +1,71 @@
+archetype (adl_version=1.4)
+	openEHR-EHR-CLUSTER.intractable_patient_state.v1
+
+concept
+	[at0000]	-- 特定疾患患者の生活状況
+language
+	original_language = <[ISO_639-1::ja]>
+description
+	original_author = <
+		["name"] = <"">
+	>
+	details = <
+		["ja"] = <
+			language = <[ISO_639-1::ja]>
+			purpose = <"">
+			use = <"">
+			misuse = <"">
+		>
+	>
+	lifecycle_state = <"0">
+	other_contributors = <>
+	other_details = <
+		["references"] = <"">
+		["MD5-CAM-1.0.1"] = <"65D2E4086E9E276A0EDB7969BA80DFBF">
+	>
+
+definition
+	CLUSTER[at0000] matches {	-- 特定疾患患者の生活状況
+		items cardinality matches {0..*; unordered} matches {
+			CLUSTER[at0001] occurrences matches {0..1} matches {	-- 生活状況
+				items cardinality matches {0..*; unordered} matches {
+					ELEMENT[at0003] occurrences matches {0..1} matches {	-- 社会活動
+						value matches {
+							DV_CODED_TEXT matches {
+								defining_code matches {[local::]}
+							}
+						}
+					}
+					ELEMENT[at0004] occurrences matches {0..1} matches {	-- 日常生活
+						value matches {
+							DV_TEXT matches {*}
+						}
+					}
+				}
+			}
+		}
+	}
+
+ontology
+	term_definitions = <
+		["ja"] = <
+			items = <
+				["at0000"] = <
+					text = <"特定疾患患者の生活状況">
+					description = <"特定疾患患者の生活状況と，社会状況と受診状況">
+				>
+				["at0001"] = <
+					text = <"生活状況">
+					description = <"*">
+				>
+				["at0003"] = <
+					text = <"社会活動">
+					description = <"社会活動状況">
+				>
+				["at0004"] = <
+					text = <"日常生活">
+					description = <"*">
+				>
+			>
+		>
+	>

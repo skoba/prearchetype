@@ -1,0 +1,59 @@
+archetype (adl_version=1.4)
+	openEHR-EHR-ADMIN_ENTRY.individual.v1
+
+concept
+	[at0000]	-- Individual identification 
+language
+	original_language = <[ISO_639-1::ja]>
+description
+	original_author = <
+		["name"] = <"">
+	>
+	details = <
+		["ja"] = <
+			language = <[ISO_639-1::ja]>
+			purpose = <"">
+			use = <"">
+			misuse = <"">
+		>
+	>
+	lifecycle_state = <"0">
+	other_contributors = <>
+	other_details = <
+		["references"] = <"">
+		["MD5-CAM-1.0.1"] = <"5FB8A751FBC77678ED05666A1395161B">
+	>
+
+definition
+	ADMIN_ENTRY[at0000] matches {	-- Individual identification 
+		data matches {
+			ITEM_TREE[at0001] matches {	-- Tree
+				items cardinality matches {0..*; unordered} matches {
+					allow_archetype CLUSTER[at0002] occurrences matches {0..*} matches {	-- individual details
+						include
+							archetype_id/value matches {/.*/}
+					}
+				}
+			}
+		}
+	}
+
+ontology
+	term_definitions = <
+		["ja"] = <
+			items = <
+				["at0000"] = <
+					text = <"Individual identification ">
+					description = <"Demographic and identifying individual information">
+				>
+				["at0001"] = <
+					text = <"Tree">
+					description = <"@ internal @">
+				>
+				["at0002"] = <
+					text = <"individual details">
+					description = <"*">
+				>
+			>
+		>
+	>

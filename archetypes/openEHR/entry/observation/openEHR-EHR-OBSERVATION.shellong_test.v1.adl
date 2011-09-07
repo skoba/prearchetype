@@ -1,0 +1,134 @@
+﻿archetype (adl_version=1.4)
+	openEHR-EHR-OBSERVATION.shellong_test.v1
+
+concept
+	[at0000]	-- Shellong試験
+language
+	original_language = <[ISO_639-1::ja]>
+description
+	original_author = <
+		["name"] = <"">
+	>
+	details = <
+		["ja"] = <
+			language = <[ISO_639-1::ja]>
+			purpose = <"">
+			use = <"">
+			misuse = <"">
+		>
+	>
+	lifecycle_state = <"0">
+	other_contributors = <>
+	other_details = <
+		["references"] = <"">
+		["MD5-CAM-1.0.1"] = <"23C3E62CF7F38CEF81FE770FBC2FE4AF">
+	>
+
+definition
+	OBSERVATION[at0000] matches {	-- Shellong試験
+		data matches {
+			HISTORY[at0001] matches {	-- Event Series
+				events cardinality matches {1..*; unordered} matches {
+					EVENT[at0002] occurrences matches {0..1} matches {	-- 任意のイベント(Event)
+						data matches {
+							ITEM_TREE[at0003] matches {	-- Tree
+								items cardinality matches {0..*; unordered} matches {
+									CLUSTER[at0004] occurrences matches {0..1} matches {	-- 臥位血圧
+										items cardinality matches {0..*; unordered} matches {
+											ELEMENT[at0005] occurrences matches {0..1} matches {	-- 収縮期血圧
+												value matches {
+													C_DV_QUANTITY <
+													>
+												}
+											}
+											ELEMENT[at0006] occurrences matches {0..1} matches {	-- 拡張期血圧
+												value matches {
+													C_DV_QUANTITY <
+													>
+												}
+											}
+										}
+									}
+									CLUSTER[at0007] occurrences matches {0..1} matches {	-- 立位血圧
+										items cardinality matches {0..*; unordered} matches {
+											ELEMENT[at0008] occurrences matches {0..1} matches {	-- 収縮期血圧
+												value matches {
+													C_DV_QUANTITY <
+													>
+												}
+											}
+											ELEMENT[at0009] occurrences matches {0..1} matches {	-- 拡張期血圧
+												value matches {
+													C_DV_QUANTITY <
+													>
+												}
+											}
+										}
+									}
+									ELEMENT[at0010] occurrences matches {0..1} matches {	-- 実施の有無
+										value matches {
+											DV_BOOLEAN matches {
+												value matches {True, False}
+											}
+										}
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+
+ontology
+	term_definitions = <
+		["ja"] = <
+			items = <
+				["at0000"] = <
+					text = <"Shellong試験">
+					description = <"起立性低血圧のスクリーニングのためのテスト">
+				>
+				["at0001"] = <
+					text = <"Event Series">
+					description = <"@ internal @">
+				>
+				["at0002"] = <
+					text = <"任意のイベント(Event)">
+					description = <"*">
+				>
+				["at0003"] = <
+					text = <"Tree">
+					description = <"@ internal @">
+				>
+				["at0004"] = <
+					text = <"臥位血圧">
+					description = <"*">
+				>
+				["at0005"] = <
+					text = <"収縮期血圧">
+					description = <"*">
+				>
+				["at0006"] = <
+					text = <"拡張期血圧">
+					description = <"*">
+				>
+				["at0007"] = <
+					text = <"立位血圧">
+					description = <"*">
+				>
+				["at0008"] = <
+					text = <"収縮期血圧">
+					description = <"*">
+				>
+				["at0009"] = <
+					text = <"拡張期血圧">
+					description = <"*">
+				>
+				["at0010"] = <
+					text = <"実施の有無">
+					description = <"*">
+				>
+			>
+		>
+	>

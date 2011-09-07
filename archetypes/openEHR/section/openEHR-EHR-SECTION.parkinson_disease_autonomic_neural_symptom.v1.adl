@@ -1,0 +1,40 @@
+archetype (adl_version=1.4)
+	openEHR-EHR-SECTION.parkinson_disease_autonomic_neural_symptom.v1
+
+concept
+	[at0000]	-- パーキンソン病自律神経症状
+language
+	original_language = <[ISO_639-1::ja]>
+description
+	original_author = <
+		["name"] = <"">
+	>
+	details = <
+		["ja"] = <
+			language = <[ISO_639-1::ja]>
+			purpose = <"">
+			use = <"">
+			misuse = <"">
+			copyright = <"">
+		>
+	>
+	lifecycle_state = <"0">
+	other_contributors = <>
+	other_details = <
+		["MD5-CAM-1.0.1"] = <"62F5DA32627947910357F4EFE45E8452">
+	>
+
+definition
+	SECTION[at0000] matches {*}
+
+ontology
+	term_definitions = <
+		["ja"] = <
+			items = <
+				["at0000"] = <
+					text = <"パーキンソン病自律神経症状">
+					description = <"unknown">
+				>
+			>
+		>
+	>

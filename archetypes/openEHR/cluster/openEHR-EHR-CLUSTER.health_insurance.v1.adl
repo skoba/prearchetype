@@ -1,0 +1,236 @@
+archetype (adl_version=1.4)
+	openEHR-EHR-CLUSTER.health_insurance.v1
+
+concept
+	[at0000]	-- Health insurance
+language
+	original_language = <[ISO_639-1::ja]>
+	translations = <
+		["en"] = <
+			language = <[ISO_639-1::en]>
+			author = <
+				["name"] = <"Shinji KOBAYASHI">
+			>
+		>
+	>
+description
+	original_author = <
+		["name"] = <"Shinji KOBAYASHI">
+		["organisation"] = <"openEHR.jp">
+		["email"] = <"skoba@moss.gr.jp">
+		["date"] = <"2011/02/24">
+	>
+	details = <
+		["en"] = <
+			language = <[ISO_639-1::en]>
+			purpose = <"To describe Japanese health insurance system.">
+			use = <"To public health insurance system.">
+			misuse = <"Not for commercian insurance or long term care insurance.">
+		>
+		["ja"] = <
+			language = <[ISO_639-1::ja]>
+			purpose = <"">
+			use = <"">
+			misuse = <"">
+		>
+	>
+	lifecycle_state = <"Initial">
+	other_contributors = <>
+	other_details = <
+		["references"] = <"">
+		["MD5-CAM-1.0.1"] = <"35165422B837087B623F9DBDADE04A0B">
+	>
+
+definition
+	CLUSTER[at0000] matches {	-- Health insurance
+		items cardinality matches {0..*; unordered} matches {
+			CLUSTER[at0001] occurrences matches {0..1} matches {	-- Health insurance
+				items cardinality matches {0..*; unordered} matches {
+					ELEMENT[at0005] occurrences matches {0..1} matches {	-- Insurance concern name
+						value matches {
+							DV_TEXT matches {*}
+						}
+					}
+					ELEMENT[at0002] occurrences matches {0..1} matches {	-- Insurance type
+						value matches {
+							DV_TEXT matches {*}
+						}
+					}
+					ELEMENT[at0003] occurrences matches {0..1} matches {	-- Self-pay ratio
+						value matches {
+							C_DV_QUANTITY <
+							>
+						}
+					}
+					ELEMENT[at0004] occurrences matches {0..1} matches {	-- ID number
+						value matches {
+							DV_TEXT matches {*}
+						}
+					}
+					ELEMENT[at0007] occurrences matches {0..1} matches {	-- Issued date
+						value matches {
+							DV_DATE matches {*}
+						}
+					}
+					ELEMENT[at0008] occurrences matches {0..1} matches {	-- Expired date
+						value matches {
+							DV_DATE matches {*}
+						}
+					}
+				}
+			}
+			CLUSTER[at0009] occurrences matches {0..*} matches {	-- Public subsidy
+				items cardinality matches {0..*; unordered} matches {
+					ELEMENT[at0010] occurrences matches {0..1} matches {	-- Subsidy type
+						value matches {
+							DV_TEXT matches {*}
+						}
+					}
+					ELEMENT[at0011] occurrences matches {0..1} matches {	-- Law number
+						value matches {
+							DV_TEXT matches {*}
+						}
+					}
+					ELEMENT[at0015] occurrences matches {0..1} matches {	-- Certification ID number
+						value matches {
+							DV_TEXT matches {*}
+						}
+					}
+					ELEMENT[at0013] occurrences matches {0..1} matches {	-- Issued date
+						value matches {
+							DV_DATE matches {*}
+						}
+					}
+					ELEMENT[at0014] occurrences matches {0..1} matches {	-- Expired date
+						value matches {
+							DV_DATE matches {*}
+						}
+					}
+				}
+			}
+		}
+	}
+
+ontology
+	term_definitions = <
+		["en"] = <
+			items = <
+				["at0000"] = <
+					text = <"Health insurance">
+					description = <"Describe health insurance in Japanese system.">
+				>
+				["at0001"] = <
+					text = <"Health insurance">
+					description = <"**(ja)">
+				>
+				["at0002"] = <
+					text = <"Insurance type">
+					description = <"**(ja)">
+				>
+				["at0003"] = <
+					text = <"Self-pay ratio">
+					description = <"**(ja)">
+				>
+				["at0004"] = <
+					text = <"ID number">
+					description = <"**(ja)">
+				>
+				["at0005"] = <
+					text = <"Insurance concern name">
+					description = <"**(ja)">
+				>
+				["at0007"] = <
+					text = <"Issued date">
+					description = <"**(ja)">
+				>
+				["at0008"] = <
+					text = <"Expired date">
+					description = <"**(ja)">
+				>
+				["at0009"] = <
+					text = <"Public subsidy">
+					description = <"**(ja)">
+				>
+				["at0010"] = <
+					text = <"Subsidy type">
+					description = <"**(ja)">
+				>
+				["at0011"] = <
+					text = <"Law number">
+					description = <"**(ja)">
+				>
+				["at0013"] = <
+					text = <"Issued date">
+					description = <"**(ja)">
+				>
+				["at0014"] = <
+					text = <"Expired date">
+					description = <"**(ja)">
+				>
+				["at0015"] = <
+					text = <"Certification ID number">
+					description = <"**(ja)">
+				>
+			>
+		>
+		["ja"] = <
+			items = <
+				["at0000"] = <
+					text = <"健康保険">
+					description = <"健康保険制度を表現するアーキタイプ，民間保険ではなく医療保険についてのもの">
+				>
+				["at0001"] = <
+					text = <"健康保険">
+					description = <"*">
+				>
+				["at0002"] = <
+					text = <"保険者種別">
+					description = <"*">
+				>
+				["at0003"] = <
+					text = <"負担率">
+					description = <"*">
+				>
+				["at0004"] = <
+					text = <"記号番号">
+					description = <"*">
+				>
+				["at0005"] = <
+					text = <"保険者名">
+					description = <"*">
+				>
+				["at0007"] = <
+					text = <"発行年月日">
+					description = <"*">
+				>
+				["at0008"] = <
+					text = <"失効年月日">
+					description = <"*">
+				>
+				["at0009"] = <
+					text = <"公費補助">
+					description = <"*">
+				>
+				["at0010"] = <
+					text = <"公費種別">
+					description = <"*">
+				>
+				["at0011"] = <
+					text = <"法別番号">
+					description = <"*">
+				>
+				["at0013"] = <
+					text = <"公布年月日">
+					description = <"*">
+				>
+				["at0014"] = <
+					text = <"失効年月日">
+					description = <"*">
+				>
+				["at0015"] = <
+					text = <"受給者番号">
+					description = <"*">
+				>
+			>
+		>
+	>

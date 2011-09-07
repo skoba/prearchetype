@@ -1,0 +1,231 @@
+archetype (adl_version=1.4)
+	openEHR-EHR-EVALUATION.uc_disease_status.v1
+
+concept
+	[at0000]	-- 潰瘍性大腸炎の病態
+language
+	original_language = <[ISO_639-1::ja]>
+description
+	original_author = <
+		["name"] = <"">
+	>
+	details = <
+		["ja"] = <
+			language = <[ISO_639-1::ja]>
+			purpose = <"">
+			use = <"">
+			misuse = <"">
+		>
+	>
+	lifecycle_state = <"0">
+	other_contributors = <>
+	other_details = <
+		["references"] = <"">
+		["MD5-CAM-1.0.1"] = <"2F20579F6CF6FFB0027422AA46FB7EEC">
+	>
+
+definition
+	EVALUATION[at0000] matches {	-- 潰瘍性大腸炎の病態
+		data matches {
+			ITEM_TREE[at0001] matches {	-- Tree
+				items cardinality matches {0..*; unordered} matches {
+					CLUSTER[at0003] occurrences matches {0..1} matches {	-- 入院回数
+						items cardinality matches {0..*; unordered} matches {
+							ELEMENT[at0002] occurrences matches {0..1} matches {	-- 合計
+								value matches {
+									DV_COUNT matches {*}
+								}
+							}
+							ELEMENT[at0004] occurrences matches {0..1} matches {	-- 現施設
+								value matches {
+									DV_COUNT matches {*}
+								}
+							}
+							ELEMENT[at0005] occurrences matches {0..1} matches {	-- 他施設
+								value matches {
+									DV_COUNT matches {*}
+								}
+							}
+						}
+					}
+					ELEMENT[at0006] occurrences matches {0..1} matches {	-- 臨床経過
+						value matches {
+							DV_CODED_TEXT matches {
+								defining_code matches {
+									[local::
+									at0007, 	-- 1.初回発作
+									at0008, 	-- 2.再燃緩解
+									at0009, 	-- 3.慢性持続
+									at0010, 	-- 3.慢性持続（1.初回）
+									at0011, 	-- 3.慢性持続（2.再燃）
+									at0012, 	-- 4.急性電撃
+									at0013]	-- 5.不明
+								}
+							}
+						}
+					}
+					ELEMENT[at0014] occurrences matches {0..1} matches {	-- 難治性
+						value matches {
+							DV_CODED_TEXT matches {
+								defining_code matches {
+									[local::
+									at0015, 	-- 1.あり
+									at0016, 	-- 1.あり（6か月以上活動期）
+									at0017, 	-- 1.あり（2. 2回／年以上の再燃）
+									at0018]	-- 2.なし
+								}
+							}
+						}
+					}
+					CLUSTER[at0019] occurrences matches {0..1} matches {	-- 病変の広がり
+						items cardinality matches {0..*; unordered} matches {
+							ELEMENT[at0020] occurrences matches {0..1} matches {	-- あり・なし
+								value matches {
+									DV_BOOLEAN matches {
+										value matches {True, False}
+									}
+								}
+							}
+							allow_archetype CLUSTER[at0021] occurrences matches {0..*} matches {	-- 最近の罹患部位
+								include
+									archetype_id/value matches {/openEHR-EHR-CLUSTER\.anatomical_location\.v1/}
+							}
+						}
+					}
+					CLUSTER[at0023] occurrences matches {0..1} matches {	-- 腸管合併症
+						items cardinality matches {0..*; unordered} matches {
+							ELEMENT[at0024] occurrences matches {0..1} matches {	-- あり・なし
+								value matches {
+									DV_BOOLEAN matches {
+										value matches {True, False}
+									}
+								}
+							}
+							ELEMENT[at0025] occurrences matches {0..1} matches {	-- 合併症
+								value matches {
+									DV_TEXT matches {*}
+								}
+							}
+						}
+					}
+					ELEMENT[at0026] occurrences matches {0..1} matches {	-- 病期
+						value matches {
+							DV_TEXT matches {*}
+						}
+					}
+				}
+			}
+		}
+	}
+
+ontology
+	term_definitions = <
+		["ja"] = <
+			items = <
+				["at0000"] = <
+					text = <"潰瘍性大腸炎の病態">
+					description = <"特定疾患，潰瘍性大腸炎　臨床個人調査票における病態項目">
+				>
+				["at0001"] = <
+					text = <"Tree">
+					description = <"@ internal @">
+				>
+				["at0002"] = <
+					text = <"合計">
+					description = <"*">
+				>
+				["at0003"] = <
+					text = <"入院回数">
+					description = <"*">
+				>
+				["at0004"] = <
+					text = <"現施設">
+					description = <"*">
+				>
+				["at0005"] = <
+					text = <"他施設">
+					description = <"*">
+				>
+				["at0006"] = <
+					text = <"臨床経過">
+					description = <"*">
+				>
+				["at0007"] = <
+					text = <"1.初回発作">
+					description = <"*">
+				>
+				["at0008"] = <
+					text = <"2.再燃緩解">
+					description = <"*">
+				>
+				["at0009"] = <
+					text = <"3.慢性持続">
+					description = <"*">
+				>
+				["at0010"] = <
+					text = <"3.慢性持続（1.初回）">
+					description = <"*">
+				>
+				["at0011"] = <
+					text = <"3.慢性持続（2.再燃）">
+					description = <"*">
+				>
+				["at0012"] = <
+					text = <"4.急性電撃">
+					description = <"*">
+				>
+				["at0013"] = <
+					text = <"5.不明">
+					description = <"*">
+				>
+				["at0014"] = <
+					text = <"難治性">
+					description = <"*">
+				>
+				["at0015"] = <
+					text = <"1.あり">
+					description = <"*">
+				>
+				["at0016"] = <
+					text = <"1.あり（6か月以上活動期）">
+					description = <"*">
+				>
+				["at0017"] = <
+					text = <"1.あり（2. 2回／年以上の再燃）">
+					description = <"*">
+				>
+				["at0018"] = <
+					text = <"2.なし">
+					description = <"*">
+				>
+				["at0019"] = <
+					text = <"病変の広がり">
+					description = <"*">
+				>
+				["at0020"] = <
+					text = <"あり・なし">
+					description = <"*">
+				>
+				["at0021"] = <
+					text = <"最近の罹患部位">
+					description = <"*">
+				>
+				["at0023"] = <
+					text = <"腸管合併症">
+					description = <"*">
+				>
+				["at0024"] = <
+					text = <"あり・なし">
+					description = <"*">
+				>
+				["at0025"] = <
+					text = <"合併症">
+					description = <"*">
+				>
+				["at0026"] = <
+					text = <"病期">
+					description = <"*">
+				>
+			>
+		>
+	>

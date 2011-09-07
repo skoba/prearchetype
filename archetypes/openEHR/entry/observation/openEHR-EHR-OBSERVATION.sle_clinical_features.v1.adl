@@ -1,0 +1,86 @@
+archetype (adl_version=1.4)
+	openEHR-EHR-OBSERVATION.sle_clinical_features.v1
+
+concept
+	[at0000]	-- SLEに伴う臨床所見を表す
+language
+	original_language = <[ISO_639-1::ja]>
+description
+	original_author = <
+		["name"] = <"Shinji KOBAYASHI">
+		["organisation"] = <"openEHR.jp">
+		["email"] = <"skoba@moss.gr.jp">
+		["date"] = <"2010/10/27">
+	>
+	details = <
+		["ja"] = <
+			language = <[ISO_639-1::ja]>
+			purpose = <"特定疾患である全身性エリテマトーデスに関する臨床調査個人票でのデータ集積のためSLEに伴う臨床所見を記述する">
+			use = <"SLEの臨床所見を記録">
+			misuse = <"SLE以外の疾患の臨床所見を記述。あるいはSLEの合併症を記述。">
+		>
+	>
+	lifecycle_state = <"AuthorDraft">
+	other_contributors = <>
+	other_details = <
+		["references"] = <"">
+		["MD5-CAM-1.0.1"] = <"3A846E6DBCEDA09DE4C7983758ADEF7E">
+	>
+
+definition
+	OBSERVATION[at0000] matches {	-- SLEに伴う臨床所見を表す
+		data matches {
+			HISTORY[at0001] matches {	-- Event Series
+				events cardinality matches {1..*; unordered} matches {
+					EVENT[at0002] occurrences matches {0..1} matches {	-- 任意のイベント(Event)
+						data matches {
+							ITEM_TREE[at0003] matches {	-- Tree
+								items cardinality matches {0..*; unordered} matches {
+									allow_archetype CLUSTER[at0004] occurrences matches {0..*} matches {	-- 臨床所見 
+										include
+											archetype_id/value matches {/openEHR-EHR-CLUSTER\.case_identification(-[a-zA-Z0-9_]+)*\.v1|openEHR-EHR-CLUSTER\.inspection-skin-scalp(-[a-zA-Z0-9_]+)*\.v1|openEHR-EHR-CLUSTER\.inspection(-[a-zA-Z0-9_]+)*\.v1/}
+									}
+									allow_archetype CLUSTER[at0006] occurrences matches {0..*} matches {	-- 臨床症状
+										include
+											archetype_id/value matches {/.*/}
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+
+ontology
+	term_definitions = <
+		["ja"] = <
+			items = <
+				["at0000"] = <
+					text = <"SLEに伴う臨床所見を表す">
+					description = <"unknown">
+				>
+				["at0001"] = <
+					text = <"Event Series">
+					description = <"@ internal @">
+				>
+				["at0002"] = <
+					text = <"任意のイベント(Event)">
+					description = <"*">
+				>
+				["at0003"] = <
+					text = <"Tree">
+					description = <"@ internal @">
+				>
+				["at0004"] = <
+					text = <"臨床所見 ">
+					description = <"*">
+				>
+				["at0006"] = <
+					text = <"臨床症状">
+					description = <"*">
+				>
+			>
+		>
+	>

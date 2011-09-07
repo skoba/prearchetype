@@ -1,0 +1,84 @@
+archetype (adl_version=1.4)
+	openEHR-EHR-OBSERVATION.perkinson_disease_symptom.v1
+
+concept
+	[at0000]	-- パーキンソン病の臨床症状
+language
+	original_language = <[ISO_639-1::ja]>
+description
+	original_author = <
+		["name"] = <"">
+	>
+	details = <
+		["ja"] = <
+			language = <[ISO_639-1::ja]>
+			purpose = <"">
+			use = <"">
+			misuse = <"">
+		>
+	>
+	lifecycle_state = <"0">
+	other_contributors = <>
+	other_details = <
+		["references"] = <"">
+		["MD5-CAM-1.0.1"] = <"DCBCF0D288E3235B84009D442775987E">
+	>
+
+definition
+	OBSERVATION[at0000] matches {	-- パーキンソン病の臨床症状
+		data matches {
+			HISTORY[at0001] matches {	-- Event Series
+				events cardinality matches {1..*; unordered} matches {
+					EVENT[at0002] occurrences matches {0..1} matches {	-- 任意のイベント(Event)
+						data matches {
+							ITEM_TREE[at0003] matches {	-- Tree
+								items cardinality matches {0..*; unordered} matches {
+									ELEMENT[at0005] occurrences matches {0..1} matches {	-- 症状
+										value matches {
+											DV_TEXT matches {*}
+										}
+									}
+									allow_archetype CLUSTER[at0004] occurrences matches {0..*} matches {	-- 症状詳細
+										include
+											archetype_id/value matches {/.*/}
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+
+ontology
+	term_definitions = <
+		["ja"] = <
+			items = <
+				["at0000"] = <
+					text = <"パーキンソン病の臨床症状">
+					description = <"unknown">
+				>
+				["at0001"] = <
+					text = <"Event Series">
+					description = <"@ internal @">
+				>
+				["at0002"] = <
+					text = <"任意のイベント(Event)">
+					description = <"*">
+				>
+				["at0003"] = <
+					text = <"Tree">
+					description = <"@ internal @">
+				>
+				["at0004"] = <
+					text = <"症状詳細">
+					description = <"*">
+				>
+				["at0005"] = <
+					text = <"症状">
+					description = <"*">
+				>
+			>
+		>
+	>

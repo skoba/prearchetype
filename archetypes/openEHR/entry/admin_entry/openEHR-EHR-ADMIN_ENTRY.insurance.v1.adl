@@ -1,0 +1,93 @@
+archetype (adl_version=1.4)
+	openEHR-EHR-ADMIN_ENTRY.insurance.v1
+
+concept
+	[at0000]	-- Insurance
+language
+	original_language = <[ISO_639-1::ja]>
+	translations = <
+		["en"] = <
+			language = <[ISO_639-1::en]>
+			author = <
+				["name"] = <"Shinji KOBAYASHI">
+			>
+		>
+	>
+description
+	original_author = <
+		["name"] = <"Shinji KOBAYASHI">
+		["organisation"] = <"openEHR.jp">
+		["email"] = <"skoba@moss.gr.jp">
+		["date"] = <"2011/02/24">
+	>
+	details = <
+		["en"] = <
+			language = <[ISO_639-1::en]>
+			purpose = <"To describe health insurance and public subsidy mainly in Japanese healthcare.">
+			use = <"To manage or operate health insurance">
+			misuse = <"">
+		>
+		["ja"] = <
+			language = <[ISO_639-1::ja]>
+			purpose = <"患者保険情報を表現するため">
+			use = <"保険情報を記録する">
+			misuse = <"">
+		>
+	>
+	lifecycle_state = <"AuthorDraft">
+	other_contributors = <>
+	other_details = <
+		["references"] = <"">
+		["MD5-CAM-1.0.1"] = <"B3C34FB0D7BBB49C66A21B27D3FD1CC5">
+	>
+
+definition
+	ADMIN_ENTRY[at0000] matches {	-- Insurance
+		data matches {
+			ITEM_TREE[at0001] matches {	-- *Tree(ja)
+				items cardinality matches {0..*; unordered} matches {
+					allow_archetype CLUSTER[at0002] occurrences matches {0..*} matches {	-- Insurance
+						include
+							archetype_id/value matches {/openEHR-EHR-CLUSTER\.care_insurance(-[a-zA-Z0-9_]+)*\.v1|openEHR-EHR-CLUSTER\.health_insurance(-[a-zA-Z0-9_]+)*\.v1/}
+					}
+				}
+			}
+		}
+	}
+
+ontology
+	term_definitions = <
+		["en"] = <
+			items = <
+				["at0000"] = <
+					text = <"Insurance">
+					description = <"Health insurance and related public subsidy information
+">
+				>
+				["at0001"] = <
+					text = <"*Tree(ja)">
+					description = <"*@ internal @(ja)">
+				>
+				["at0002"] = <
+					text = <"Insurance">
+					description = <"**(ja)">
+				>
+			>
+		>
+		["ja"] = <
+			items = <
+				["at0000"] = <
+					text = <"保険関連情報">
+					description = <"健康保険と公費負担に関連することを記述するためのアーキタイプ">
+				>
+				["at0001"] = <
+					text = <"Tree">
+					description = <"@ internal @">
+				>
+				["at0002"] = <
+					text = <"保険">
+					description = <"*">
+				>
+			>
+		>
+	>

@@ -1,0 +1,22 @@
+* Synopsis
+
+ Ruby openEHR implementation project.
+
+* Version
+ Draft
+
+* Requirements
+ Proper archetype and template environment, openEHR specification 1.0.2.
+
+* Description
+ This is a preliminary repository for archetype and templates.
+ Warranty is void to use. Recommend for research use. 
+
+* Authors
+ Author is described in each field of the artefacts.
+
+* Copyright
+All the archetypes and templates are copyrigted by each authors.
+
+* License
+Creative Commons CC-BY(-SA)
